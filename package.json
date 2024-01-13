@@ -1,6 +1,6 @@
 {
-  "name": "vite-plugin-theme",
-  "version": "0.8.3",
+  "name": "vite-plugin-theme-fix",
+  "version": "0.8.5",
   "description": "Vite plugin for dynamically changing the theme color of the interface",
   "main": "dist/index.js",
   "module": "dist/index.js",
@@ -38,12 +38,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/vbenjs/vite-plugin-theme"
+    "url": "https://github.com/vok123/vite-plugin-theme"
   },
   "bugs": {
-    "url": "https://github.com/vbenjs/vite-plugin-theme/issues"
+    "url": "https://github.com/vok123/vite-plugin-theme/issues"
   },
-  "homepage": "https://github.com/vbenjs/vite-plugin-theme/tree/master/#readme",
+  "homepage": "https://github.com/vok123/vite-plugin-theme/tree/master/#readme",
   "peerDependencies": {
     "vite": ">=2.0.0-beta.49"
   },

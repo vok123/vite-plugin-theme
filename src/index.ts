@@ -1,14 +1,14 @@
-import { Plugin, ResolvedConfig } from 'vite';
-import path from 'path';
-import fs from 'fs-extra';
 import { debug as Debug } from 'debug';
+import fs from 'fs-extra';
+import path from 'path';
+import { Plugin, ResolvedConfig } from 'vite';
 import { extractVariable, minifyCSS } from './utils';
 
 export * from '../client/colorUtils';
 
 export { antdDarkThemePlugin } from './antdDarkThemePlugin';
 
-import { VITE_CLIENT_ENTRY, cssLangRE, cssVariableString, CLIENT_PUBLIC_PATH } from './constants';
+import { CLIENT_PUBLIC_PATH, VITE_CLIENT_ENTRY, cssLangRE, cssVariableString } from './constants';
 
 export type ResolveSelector = (selector: string) => string;
 
@@ -24,9 +24,9 @@ export interface ViteThemeOptions {
   verbose?: boolean;
 }
 
-import { createFileHash, formatCss } from './utils';
 import chalk from 'chalk';
 import { injectClientPlugin } from './injectClientPlugin';
+import { createFileHash, formatCss } from './utils';
 
 const debug = Debug('vite-plugin-theme');
 
@@ -38,7 +38,7 @@ export function viteThemePlugin(opt: ViteThemeOptions): Plugin[] {
 
   let extCssSet = new Set<string>();
 
-  const emptyPlugin: Plugin = {
+  const emptyPlugin: any = {
     name: 'vite:theme',
   };
 

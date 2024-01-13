@@ -35,9 +35,9 @@ declare const __ANTD_DARK_PLUGIN_EXTRACT_CSS__: boolean;
 declare const __ANTD_DARK_PLUGIN_LOAD_LINK__: boolean;
 declare const __PROD__: boolean;
 
-const colorPluginOutputFileName = __COLOR_PLUGIN_OUTPUT_FILE_NAME__;
-const isProd = __PROD__;
-const colorPluginOptions = __COLOR_PLUGIN_OPTIONS__;
+const colorPluginOutputFileName = '';
+const isProd = true;
+const colorPluginOptions = {} as Options;
 
 const injectTo = colorPluginOptions.injectTo;
 const debounceThemeRender = debounce(200, renderTheme);
@@ -76,7 +76,7 @@ function renderTheme() {
 
   const styleDom = getStyleDom(styleTagId);
   let html = styleDom.innerHTML;
-  for (let [id, css] of styleRenderQueueMap.entries()) {
+  for (const [id, css] of styleRenderQueueMap.entries()) {
     html += css;
     window[globalField].styleRenderQueueMap!.delete(id);
     window[globalField].styleIdMap!.set(id, css);
@@ -97,7 +97,7 @@ export async function replaceStyleVariables({
   const styleIdMap = getGlobalOptions('styleIdMap')!;
   const styleRenderQueueMap = getGlobalOptions('styleRenderQueueMap')!;
   if (!isProd) {
-    for (let [id, css] of styleIdMap.entries()) {
+    for (const [id, css] of styleIdMap.entries()) {
       styleRenderQueueMap.set(id, css);
     }
     renderTheme();
@@ -114,8 +114,8 @@ export async function replaceStyleVariables({
 }
 
 export async function loadDarkThemeCss() {
-  const extractCss = __ANTD_DARK_PLUGIN_EXTRACT_CSS__;
-  const isLoadLink = __ANTD_DARK_PLUGIN_LOAD_LINK__;
+  const extractCss = true;
+  const isLoadLink = true;
   if (darkCssIsReady || !extractCss) {
     return;
   }

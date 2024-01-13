@@ -1,12 +1,12 @@
-import type { Plugin, ResolvedConfig } from 'vite';
-import path from 'path';
+import chalk from 'chalk';
 import fs from 'fs-extra';
 import less from 'less';
-import { createFileHash, minifyCSS, extractVariable } from './utils';
-import chalk from 'chalk';
+import path from 'path';
+import type { Plugin, ResolvedConfig } from 'vite';
 import { colorRE, linkID } from './constants';
 import { injectClientPlugin } from './injectClientPlugin';
 import { lessPlugin } from './preprocessor/less';
+import { createFileHash, extractVariable, minifyCSS } from './utils';
 
 export interface AntdDarkThemeOption {
   darkModifyVars?: any;
@@ -40,7 +40,7 @@ export function antdDarkThemePlugin(options: AntdDarkThemeOption): Plugin[] {
 
   const cssOutputName = `${fileName}.${createFileHash()}.css`;
   
-  const hrefProtocals = [ 'http://' ];
+  const hrefProtocals = [ 'http://', 'https://', '//' ];
 
   const getCss = (css: string) => {
     return `[${selector || 'data-theme="dark"'}] {${css}}`;
@@ -219,6 +219,6 @@ export function antdDarkThemePlugin(options: AntdDarkThemeOption): Plugin[] {
           } catch (error) {}
         }
       },
-    },
+    } as Plugin,
   ];
 }
